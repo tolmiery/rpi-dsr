@@ -5,6 +5,7 @@ body {
     color: black;
     font-size: 22px;
   }
+  
   .small-text{
     font-size: 12px;
   }
@@ -130,4 +131,13 @@ body {
     display: flex;
   }
 
-  
+#background {
+    background-image: url(rpicampus.jpg);
+    background-color: rgba(255,255,255,0.3);
+    background-blend-mode: lighten;
+    background-size: cover;
+    padding: 10px;
+    border-bottom: 10px solid #333;
+    text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333,
+             1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
+}
