@@ -138,6 +138,8 @@ body {
     background-size: cover;
     padding: 10px;
     border-bottom: 10px solid #333;
+    text-align: center;
+    color: #E7E7E7;
     text-shadow: 2px 0 #333, -2px 0 #333, 0 2px #333, 0 -2px #333,
              1px 1px #333, -1px -1px #333, 1px -1px #333, -1px 1px #333;
 }
