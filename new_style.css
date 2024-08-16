@@ -3,7 +3,18 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #E7E7E7;
     color: black;
-    font-size: 25px;
+    font-size: 22px;
+  }
+  .small-text{
+    font-size: 12px;
+  }
+
+  .standard-text{
+    font-size: 22px;
+  }
+
+  .large-text{
+    font-size: 32px;
   }
   
   .dark-mode {
@@ -18,7 +29,6 @@ body {
    /* Style the navbar */
 #navbar {
     width:100%;
-    overflow: hidden;
     background-color: #333;
   }
   
@@ -60,30 +70,64 @@ body {
     height: auto;
     display: block;
   }
-  .dropdown {
-    display: inline-block;
-    position: relative;
+  #navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
   }
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    width: 100%;
-    overflow: auto;
-    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+  
+  #navbar li {
+    float: left;
   }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .dropdown-content a {
-    display: block;
-    color: #000000;
-    padding: 5px;
+  
+  #navbar li a, .dropbtn {
+    display: inline-flex;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
   }
-  .dropdown-content a:hover {
-    color: #FFFFFF;
-    background-color: #00A4BD;
+  
+  #navbar li a:hover, .dropdown:hover .dropbtn {
+    background-color: #E7E7E7;
   }
-
+  
+  #navbar li.dropdown {
+    display: inline-block;
+  }
+  
+  #navbar .dropdown-content {
+    display: none;
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction:column;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  #navbar .dropdown-content li a {
+    top: 0;
+    color: black;
+    position: relative;
+    padding: 12px 16px;
+    margin: 0;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction:column;
+    text-align: left;
+  }
+  
+  #navbar .dropdown-content a:hover {background-color: #f1f1f1;}
+  
+  #navbar .dropdown:hover .dropdown-content {
+    display: flex;
+  }
 
   

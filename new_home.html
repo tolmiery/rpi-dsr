@@ -18,11 +18,23 @@
 <div class="image"><img src="disability-pride-flag.png" alt="page logo"></div>
 <div id="navbar">
     
-    <a class="active" href="new_home.html">Home</a>
-    <a href="new_resources.html">Campus Resources</a>
-    <a href="new_bonus.html">Club Projects</a>
-    <a href="new_calendar.html">Calendar</a>
-    <a onclick="toggleDark()">Toggle Darkmode</a>
+    <ul>
+        <li><a class="active" href="new_home.html">Home</a></li>
+        <li><a href="new_resources.html">Campus Resources</a></li>
+        <li><a href="new_bonus.html">Club Projects</a></li>
+        <li><a href="new_calendar.html">Calendar</a></li>
+        <li><a onclick="toggleDark()">Toggle Darkmode</a></li>
+        <li class="dropdown">
+          <a class="dropbtn">Text Size</a>
+            <ul class ="dropdown-content" style="background-color: #E7E7E7;">
+                <li><a onclick="textSmall()">Small</a></li>
+                <li><a onclick="textMed()">Standard</a></li>
+                <li><a onclick="textLarge()">Large</a></li>
+            </ul>
+        </li>
+      </ul>
+
+    
 </div>
 
 <div id ="text">
@@ -77,26 +89,26 @@
     }
     } 
 
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    function textSmall() {
+        var element = document.body;
+        element.classList.remove("standard-text");
+        element.classList.remove("large-text");
+        element.classList.add("small-text");
     }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-        }
-        }
+    function textMed() {
+        var element = document.body;
+        element.classList.remove("large-text");
+        element.classList.remove("small-text");
+        element.classList.add("standard-text");
     }
+    
+    function textLarge() {
+        var element = document.body;
+        element.classList.remove("small-text");
+        element.classList.remove("standard-text");
+        element.classList.add("large-text");
     }
-
 </script>
 
 </body>
