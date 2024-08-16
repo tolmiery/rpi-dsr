@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href = "new_style.css">
+<style>
+
+
+#navbar a.active {
+  background-color: #39AD7D;
+  color: black;
+}
+
+
+</style>
+</head>
+<body onload="darklight">
+<div class="image"><img src="disability-pride-flag.png" alt="page logo"></div>
+<div id="navbar">
+    
+    <a class="active" href="new_home.html">Home</a>
+    <a href="new_resources.html">Campus Resources</a>
+    <a href="new_bonus.html">Club Projects</a>
+    <a href="new_calendar.html">Calendar</a>
+    <a onclick="toggleDark()">Toggle Darkmode</a>
+</div>
+
+<div id ="text">
+    <h1>Hello! <br> Welcome to the RPI Disabled Students <br> homepage</h1>
+</div>
+<div><hr class="rounded"></div>
+<div id="text"> 
+    <div class="container">
+        <div class="row">
+            <div class="about-col-2">
+                <h2 class="sub-title">About</h2>
+                <p>
+                    The Disabled Students at RPI (DSR) is a group of students who advocate for accessibility on campus. We use the term "disabled" in our name as an all-encompassing term for anyone with a physical, mental, and/or developmental disability; chronic illness; neurodivergence; or any health concern that poses a challenge in daily life as a college student. So even if you don't identify as disabled, this club could be for you!
+                    <br><br>
+                    Being a college student with health problems can feel very lonely, so this club was created to bring students together and show that there are others out there like you. Our club is first and foremost a judgement-free zone for those with health challenges. While you do not need to have a health problem to join the DSR, we do ask that you remain respectful of those who do and refrain from any hateful comments. 
+                    <br><br><br>
+                    Our Discord space is a great way to connect with us. We also meet weekly to discuss our projects and play games.
+                </p>
+            </div>
+    </div>
+    <br>
+    <iframe src="https://discord.com/widget?id=786796565334589451&theme=dark" width=100% height=450vh allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+</div>
+
+<script>
+    function darklight() {
+        
+        isDark = document.cookie;
+        if (isdark)
+        element.classList.toggle("dark-mode");
+    } 
+    function toggleDark() {
+       var element = document.body;
+       element.classList.toggle("dark-mode");
+       document.cookie = "isDark=true";
+    }
+
+    window.onscroll = function() {stickFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function stickFunction() {
+    if (window.scrollY >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+    } 
+
+    /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        }
+    }
+    }
+
+</script>
+
+</body>
+</html>

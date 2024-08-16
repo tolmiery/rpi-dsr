@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href = "new_style.css">
+<style>
+
+#navbar a.active {
+  background-color: #EDDD79;
+  color: black;
+}
+
+</style>
+</head>
+
+<body onload="darklight">
+
+    <div class="image"><img src="disability-pride-flag.png" alt="page logo"></div>
+    <div id="navbar">
+        
+        <a href="new_home.html">Home</a>
+        <a  href="new_resources.html">Campus Resources</a>
+        <a class="active" href="new_bonus.html">Club Projects</a>
+        <a href="new_calendar.html">Calendar</a>
+        <a onclick="toggleDark()">Toggle Darkmode</a>
+    </div>
+
+<div id="text" class="header-text" style="border-radius: 5px">
+    <h1> DSR Projects </h1> <!-- Use Header css class here -->
+</div>
+<div><hr class="rounded"></div>
+<div id="text" class="container">
+    <div class="project-card">
+        <div class="row">
+            <div class="about-col-2">
+                <h1 class="sub-title"> Infrastructure Survey </h1> 
+                <p> An ongoing form that allows RPI students to report accessibility complaints </p>
+                <a target="_blank" href="https://forms.gle/7vPyThC3GG4VAu657">Participate now!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="text" class="container">
+    <div class="project-card">
+        <div class="row">
+            <div class="about-col-2">
+                <h1 class="sub-title"> Accessible Routes </h1> 
+                <p> The <a href = "#">Accessible Routes</a> RCOS project is working on a map app of all accessibility obstacles on campus. Updates coming soon!</p>
+                <p>For a map of stairs on campus, 
+                    <a href = "https://www.google.com/maps/d/u/0/viewer?mid=1MgcfkuajKpPSsub__9OEOe-isj5M-R4&ll=42.73089207788415%2C-73.68239643949244&z=17">click here.</a></p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function darklight() {
+        if (localStorage.getItem("dark-mode"))
+        element.classList.toggle(localStorage.getItem("dark-mode"));
+    } 
+    function toggleDark() {
+       var element = document.body;
+       element.classList.toggle("dark-mode");
+       localStorage.setItem("theme", "dark-mode");
+    }
+    window.onscroll = function() {myFunction()};
+
+    // Get the navbar
+    var navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    var sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+    if (window.scrollY >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+    } 
+</script>
+</body>
+</html>
