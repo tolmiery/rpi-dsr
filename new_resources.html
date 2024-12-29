@@ -1,176 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href = "new_style.css">
-<style>
-
-
-#navbar a.active {
-  background-color: #7BC0DF;
-  color: black;
-}
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="new_style.css">
+  <style>
+    #navbar a.active {
+      background-color: #7BC0DF;
+      color: black;
+    }
+  </style>
+  <title>RPI Disability Resources</title>
 </head>
-<body onload=darklight()>
-    <div class="image"><img src="disability-pride-flag.png" alt="page logo"></div>
-    <div id="navbar">
-    
-        <ul>
-            <li><a href="new_home.html">Home</a></li>
-            <li><a class="active" href="new_resources.html">Campus Resources</a></li>
-            <li><a href="new_bonus.html">Club Projects</a></li>
-            <li><a href="new_calendar.html">Calendar</a></li>
-            <li><a onclick="toggleDark()">Toggle Darkmode</a></li>
-            <li class="dropdown">
-                <a class="dropbtn">Text Size</a>
-                  <ul class ="dropdown-content" style="background-color: #E7E7E7;">
-                      <li><a onclick="textSmall()">Small</a></li>
-                      <li><a onclick="textMed()">Standard</a></li>
-                      <li><a onclick="textLarge()">Large</a></li>
-                  </ul>
-              </li>
+
+<body onload="applySavedTheme()">
+
+  <div class="image">
+    <img src="disability-pride-flag.png" alt="Page Logo">
+  </div>
+
+  <div id="navbar">
+    <ul>
+      <li><a href="new_home.html">Home</a></li>
+      <li><a class="active" href="new_resources.html">Campus Resources</a></li>
+      <li><a href="new_bonus.html">Club Projects</a></li>
+      <li><a href="new_calendar.html">Calendar</a></li>
+      <li><a onclick="toggleDark()">Toggle Darkmode</a></li>
+      <li class="dropdown">
+        <a class="dropbtn">Text Size</a>
+        <ul class="dropdown-content" style="background-color: #E7E7E7;">
+          <li><a onclick="setTextSize('small')">Small</a></li>
+          <li><a onclick="setTextSize('medium')">Standard</a></li>
+          <li><a onclick="setTextSize('large')">Large</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div id="background">
+    <h2>RPI Disability <br> Resources</h2>
+  </div>
+
+  <div id="text">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-2">
+          <h2 class="sub-title">Types of Disabilities</h2>
+          <p>There are four categories of disability accommodated by RPI:</p>
+          <ul>
+            <li>ADHD</li>
+            <li>Learning Disabilities</li>
+            <li>Physical, Medical, and Sensory Disabilities</li>
+            <li>Psychological Disabilities</li>
           </ul>
-    
-        
-    </div>
-    <div id = "background"><h2>RPI Disability <br> Resources <br></h2></div>
-    
-
-
-<div id= "text">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-2">
-                <div class="sub-title"><h2>Types of Disabilities</h2><br></div>
-                <p>There are four categories of disability accommodated by RPI:</p><br>
-                <ul>
-                    <li>ADHD</li>
-                    <li>Learning Disabilities</li>
-                    <li> Physical, Medical, and Sensory Disabilities</li>
-                    <li>Psychological Disabilities</li>
-                </ul>
-                <p>In order to get accommodations for ADHD and learning disabilities, students are required to submit
-                     test results from within the last three years.</p>
+          <p>In order to get accommodations for ADHD and learning disabilities, students are required to submit test results from within the last three years.</p>
         </div>
+      </div>
     </div>
-</div>
-<div>
+
     <div class="container">
-        <div class="row">
-            <div class="about-col-2">
-                <div class="sub-title"><h2>Available Accommocations</h2><br></div>
-                <p>The accommodations listed on RPI's <a href = "https://studenthealth.rpi.edu/student-health-services/disability-services/types-accommodations"> 
-			<strong> website</strong></a> are:</p><br>
-                <ul>
-                    <li>Alternatively formatted materials</li>
-                    <li> Housing accommodations, such as a single bedroom or a wheelchair-accessible room</li>
-                    <li> Note-taking assistance</li>
-                    <li><p>Testing accommodations - Common testing accommodations are:</p> <ul>
-                        <li>50% extra time</li>
-                        <li>100% extra time</li>
-			<li>Distraction-reduced alternate testing environment</li>
-                        </ul></li>
-                </ul><br>
-                <p>Additional accommodations are included on the <a href="request_form.pdf"> <strong>accommodations request form</strong></a>. These are:</p>
-                <ul><br>
-                    <li>Preferential seating</li>
-                    <li>Priority Registration</li>
-                    <li>Extended time for in-class assignments</li>
-                </ul><br>
-                <p>In some cases, accommodations not listed above may be desired. These accommodations generally require
-                     more thorough documentation outlining their necessity. Previously, students have been able to obtain accommodations for
-		accessible classrooms, flexible attendance due to chronic condition, and permission to have food and drink during lecture.</p>
+      <div class="row">
+        <div class="about-col-2">
+          <h2 class="sub-title">Available Accommodations</h2>
+          <p>The accommodations listed on RPI's <a href="https://studenthealth.rpi.edu/student-health-services/disability-services/types-accommodations"><strong>website</strong></a> are:</p>
+          <ul>
+            <li>Alternatively formatted materials</li>
+            <li>Housing accommodations (e.g., single bedroom or wheelchair-accessible room)</li>
+            <li>Note-taking assistance</li>
+            <li>
+              <p>Testing accommodations – Common testing accommodations are:</p>
+              <ul>
+                <li>50% extra time</li>
+                <li>100% extra time</li>
+                <li>Distraction-reduced alternate testing environment</li>
+              </ul>
+            </li>
+          </ul>
+          <p>Additional accommodations are included on the <a href="request_form.pdf"><strong>accommodations request form</strong></a>. These include:</p>
+          <ul>
+            <li>Preferential seating</li>
+            <li>Priority Registration</li>
+            <li>Extended time for in-class assignments</li>
+          </ul>
+          <p>In some cases, accommodations not listed above may be required. These generally require more thorough documentation outlining their necessity. Examples include accessible classrooms, flexible attendance due to chronic conditions, and permission to have food and drink during lectures.</p>
         </div>
+      </div>
     </div>
-</div>
 
-<div>
     <div class="container">
-        <div class="row">
-            <div class="about-col-2">
-                <div class="sub-title"><h2>Requesting Accommocations</h2><br></div>
-                <p>The steps for requesting initial accommodations are:</p><br>
-		    <ol>
-			    <li>Complete an <a href="request_form.pdf"> <strong>accommodations request form</strong></a>.</li>
-			    <li>Acquire documentation of your disability from your doctor.</li>
-			    <li>Submit all documentation, along with your request form, to Disability Student Services. Claire Mahoney, the director
-                     of the DSS, is reachable at 
-				    <a href = "mailto:dss@rpi.edu">dss@rpi.edu</a> or <a href = "mailto:mahonc6@rpi.edu">mahonc6@rpi.edu</a>.</li>
-			    <li>Meet with Claire to discuss your accommodations and how to alert your professors.</li>
-			    <li>After meeting with Claire, she will send you an accommodations memo outlining your approved accommodations. 
-                    Distribute your memo to your professors and meet with them to discuss logistics.
-				    <ul>
-                        <li>It's best practice to distribute your memo at the beginning of the semester. Those with testing accommodations
-                             should make sure to distribute their memos at least a week before their first exam.</li>
-                    </ul> </li>
-		    </ol>
-            <br>
-            <p>Each academic year, you will be required to renew your accommodations. The process is: 
-            </p><br>
-            <ol>
-                <li>Complete the <a href="request_form.pdf"> <strong>accommodations request form</strong></a> and note any changes to your previous accommodations.</li>
-                <li>If your documentation has gone out-of-date since the last academic year, you may be asked to
-                    send up-to-date documentation. Likewise, you may need to submit new documentation to support new accommodations.</li>
-                <li>Claire will send you an accommodations memo outlining your approved accommodations. 
-                    The distribution process is the same as for an initial accommodations memo.</li>
-            </ol>
+      <div class="row">
+        <div class="about-col-2">
+          <h2 class="sub-title">Requesting Accommodations</h2>
+          <p>The steps for requesting initial accommodations are:</p>
+          <ol>
+            <li>Complete an <a href="request_form.pdf"><strong>accommodations request form</strong></a>.</li>
+            <li>Acquire documentation of your disability from your doctor.</li>
+            <li>Submit all documentation, along with your request form, to Disability Student Services. Claire Mahoney, the director of DSS, is reachable at <a href="mailto:dss@rpi.edu">dss@rpi.edu</a> or <a href="mailto:mahonc6@rpi.edu">mahonc6@rpi.edu</a>.</li>
+            <li>Meet with Claire to discuss your accommodations and how to alert your professors.</li>
+            <li>After meeting with Claire, she will send you an accommodations memo outlining your approved accommodations. Distribute your memo to your professors and meet with them to discuss logistics.</li>
+          </ol>
+          <p>It's best practice to distribute your memo at the beginning of the semester. Those with testing accommodations should make sure to distribute their memos at least a week before their first exam.</p>
+
+          <p>Each academic year, you will be required to renew your accommodations. The process is:</p>
+          <ol>
+            <li>Complete the <a href="request_form.pdf"><strong>accommodations request form</strong></a> and note any changes to your previous accommodations.</li>
+            <li>If your documentation has gone out-of-date, you may be asked to send up-to-date documentation. Likewise, you may need to submit new documentation to support new accommodations.</li>
+            <li>Claire will send you an accommodations memo outlining your approved accommodations. The distribution process is the same as for an initial accommodations memo.</li>
+          </ol>
         </div>
-        <img src="academy_hall.jpg" alt="academy hall" style="border-radius: 5px; margin-top: 10%;"></img>
-        <p style="font-size: 1.5vw;">Academy hall, the on-campus location of the DSS.</p>
+        <img src="academy_hall.jpg" alt="Academy Hall" style="border-radius: 5px; margin-top: 10%;">
+        <p style="font-size: 1.5vw;">Academy Hall, the on-campus location of the DSS.</p>
+      </div>
     </div>
-</div>
 
-<script>
-    function darklight() {
-        var please = window.localStorage.getItem("theme")
-        if (please)
-         element.classList.toggle(window.localStorage.getItem("theme"));
-    } 
-    function toggleDark() {
-       var element = document.body;
-       element.classList.toggle("dark-mode");
-       window.localStorage.setItem("theme", "dark-mode")
-    }
-    window.onscroll = function() {stickFunction()};
+  </div>
 
-    // Get the navbar
-    var navbar = document.getElementById("navbar");
+  <script type="text/javascript" src="dsr_settings.js"></script>
 
-    // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function stickFunction() {
-    if (window.scrollY >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-    } 
-
-    function textSmall() {
-        var element = document.body;
-        element.classList.remove("standard-text");
-        element.classList.remove("large-text");
-        element.classList.add("small-text");
-    }
-
-    function textMed() {
-        var element = document.body;
-        element.classList.remove("large-text");
-        element.classList.remove("small-text");
-        element.classList.add("standard-text");
-    }
-    
-    function textLarge() {
-        var element = document.body;
-        element.classList.remove("small-text");
-        element.classList.remove("standard-text");
-        element.classList.add("large-text");
-    }
-</script>
 </body>
+
 </html>

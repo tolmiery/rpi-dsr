@@ -1,112 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href = "new_style.css">
-<style>
-
-
-#navbar a.active {
-  background-color: #39AD7D;
-  color: black;
-}
-
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="new_style.css">
+  <style>
+    #navbar a.active {
+      background-color: #39AD7D;
+      color: black;
+    }
+  </style>
+  <title>RPI Disabled Students</title>
 </head>
-<body onload="darklight">
-<div class="image"><img src="disability-pride-flag.png" alt="page logo"></div>
-<div id="navbar">
-    
+<body onload="applySavedTheme()">
+
+  <div class="image">
+    <img src="disability-pride-flag.png" alt="Page Logo">
+  </div>
+
+  <div id="navbar">
     <ul>
-        <li><a class="active" href="new_home.html">Home</a></li>
-        <li><a href="new_resources.html">Campus Resources</a></li>
-        <li><a href="new_bonus.html">Club Projects</a></li>
-        <li><a href="new_calendar.html">Calendar</a></li>
-        <li><a onclick="toggleDark()">Toggle Darkmode</a></li>
-        <li class="dropdown">
-          <a class="dropbtn">Text Size</a>
-            <ul class ="dropdown-content" style="background-color: #E7E7E7;">
-                <li><a onclick="textSmall()">Small</a></li>
-                <li><a onclick="textMed()">Standard</a></li>
-                <li><a onclick="textLarge()">Large</a></li>
-            </ul>
-        </li>
-      </ul>
+      <li><a class="active" href="new_home.html">Home</a></li>
+      <li><a href="new_resources.html">Campus Resources</a></li>
+      <li><a href="new_bonus.html">Club Projects</a></li>
+      <li><a href="new_calendar.html">Calendar</a></li>
+      <li><a onclick="toggleDark()">Toggle Darkmode</a></li>
+      <li class="dropdown">
+        <a class="dropbtn">Text Size</a>
+        <ul class="dropdown-content" style="background-color: #E7E7E7;">
+          <li><a onclick="setTextSize('small')">Small</a></li>
+          <li><a onclick="setTextSize('medium')">Standard</a></li>
+          <li><a onclick="setTextSize('large')">Large</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
-    
-</div>
+  <div id="background">
+    <h2>Hello! <br> Welcome to the RPI Disabled Students homepage.</h2>
+  </div>
 
-<div id = "background"><h2>Hello! <br> Welcome to the RPI Disabled Students homepage.</h2></div>
-<div id="text"> 
+  <div id="text">
     <div class="container">
-        <div class="row">
-            <div class="about-col-2">
-                <h2 class="sub-title">About</h2>
-                <p>
-                    The Disabled Students at RPI (DSR) is a group of students who advocate for accessibility on campus. We use the term "disabled" in our name as an all-encompassing term for anyone with a physical, mental, and/or developmental disability; chronic illness; neurodivergence; or any health concern that poses a challenge in daily life as a college student. So even if you don't identify as disabled, this club could be for you!
-                    <br><br>
-                    Being a college student with health problems can feel very lonely, so this club was created to bring students together and show that there are others out there like you. Our club is first and foremost a judgement-free zone for those with health challenges. While you do not need to have a health problem to join the DSR, we do ask that you remain respectful of those who do and refrain from any hateful comments. 
-                    <br><br><br>
-                    Our Discord space is a great way to connect with us. We also meet weekly to discuss our projects and play games.
-                </p>
-            </div>
+      <div class="row">
+        <div class="about-col-2">
+          <h2 class="sub-title">About</h2>
+          <p>
+            The Disabled Students at RPI (DSR) is a group of students who advocate for accessibility on campus. We use the term "disabled" in our name as an all-encompassing term for anyone with a physical, mental, and/or developmental disability; chronic illness; neurodivergence; or any health concern that poses a challenge in daily life as a college student. So even if you don't identify as disabled, this club could be for you!
+            <br><br>
+            Being a college student with health problems can feel very lonely, so this club was created to bring students together and show that there are others out there like you. Our club is first and foremost a judgement-free zone for those with health challenges. While you do not need to have a health problem to join the DSR, we do ask that you remain respectful of those who do and refrain from any hateful comments.
+            <br><br><br>
+            Our Discord space is a great way to connect with us. We also meet weekly to discuss our projects and play games.
+          </p>
+        </div>
+      </div>
+      <br>
+      <iframe src="https://discord.com/widget?id=786796565334589451&theme=dark" width="100%" height="450" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
     </div>
-    <br>
-    <iframe src="https://discord.com/widget?id=786796565334589451&theme=dark" width=100% height=450vh allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-</div>
+  </div>
 
-<script>
-    function darklight() {
-        
-        isDark = document.cookie;
-        if (isdark)
-        element.classList.toggle("dark-mode");
-    } 
-    function toggleDark() {
-       var element = document.body;
-       element.classList.toggle("dark-mode");
-       document.cookie = "isDark=true";
-    }
-
-    window.onscroll = function() {stickFunction()};
-
-    // Get the navbar
-    var navbar = document.getElementById("navbar");
-
-    // Get the offset position of the navbar
-    var sticky = navbar.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function stickFunction() {
-    if (window.scrollY >= sticky) {
-        navbar.classList.add("sticky")
-    } else {
-        navbar.classList.remove("sticky");
-    }
-    } 
-
-    function textSmall() {
-        var element = document.body;
-        element.classList.remove("standard-text");
-        element.classList.remove("large-text");
-        element.classList.add("small-text");
-    }
-
-    function textMed() {
-        var element = document.body;
-        element.classList.remove("large-text");
-        element.classList.remove("small-text");
-        element.classList.add("standard-text");
-    }
-    
-    function textLarge() {
-        var element = document.body;
-        element.classList.remove("small-text");
-        element.classList.remove("standard-text");
-        element.classList.add("large-text");
-    }
-</script>
+  <script type="text/javascript" src="dsr_settings.js"></script>
 
 </body>
 </html>
