@@ -7,7 +7,9 @@ function applySavedSettings() {
 
     // Update the theme dropdown to reflect the saved theme
     const themeSelect = document.getElementById('theme');
-    themeSelect.value = theme;  // Set the value of the select dropdown
+    if (themeSelect) {
+      themeSelect.value = theme; 
+    }
   }
 
   // Apply text size settings
@@ -17,18 +19,40 @@ function applySavedSettings() {
 
     // Update the text size dropdown to reflect the saved text size
     const textSizeSelect = document.getElementById('text-size');
-    textSizeSelect.value = textSize;  // Set the value of the select dropdown
+    if (textSizeSelect) {
+      textSizeSelect.value = textSize;  
+    }
   }
 }
 
-// Toggle dark mode (for use on other pages)
-function toggleDark() {
+// Save text size preference
+function saveTextSize() {
+  const textSize = document.getElementById('text-size').value;
   const element = document.body;
-  element.classList.toggle("dark-mode");
 
-  // Save theme preference
-  const currentTheme = element.classList.contains("dark-mode") ? "dark-mode" : "light-mode";
-  localStorage.setItem("theme", currentTheme);
+  // Remove any existing text size classes
+  element.classList.remove("small-text", "standard-text", "large-text");
+
+  // Apply the selected text size class
+  element.classList.add(textSize);
+
+  // Save text size preference in localStorage
+  localStorage.setItem("textSize", textSize);
+}
+
+// Save theme preference
+function saveTheme() {
+  const theme = document.getElementById('theme').value;
+  const element = document.body;
+
+  // Remove any existing theme classes
+  element.classList.remove("light-mode", "dark-mode");
+
+  // Apply the selected theme class
+  element.classList.add(theme);
+
+  // Save theme preference in localStorage
+  localStorage.setItem("theme", theme);
 }
 
 // Sticky Navbar
@@ -43,30 +67,4 @@ function stickFunction() {
   } else {
     navbar.classList.remove("sticky");
   }
-}
-
-// Save text size preference
-function saveTextSize() {
-  const textSize = document.getElementById('text-size').value;
-  const element = document.body;
-  
-  // Apply the selected text size class after clearing previous ones
-  element.classList.remove("small-text", "standard-text", "large-text");
-  element.classList.add(textSize);
-  
-  // Save text size preference in localStorage
-  localStorage.setItem("textSize", textSize);
-}
-
-// Save theme preference
-function saveTheme() {
-  const theme = document.getElementById('theme').value;
-  const element = document.body;
-
-  // Apply the selected theme class
-  element.classList.remove("light-mode", "dark-mode");
-  element.classList.add(theme);
-
-  // Save theme preference in localStorage
-  localStorage.setItem("theme", theme);
 }
