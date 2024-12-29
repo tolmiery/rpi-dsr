@@ -4,21 +4,30 @@ function applySavedSettings() {
   const theme = localStorage.getItem("theme");
   if (theme) {
     document.body.classList.add(theme);
+
+    // Update the theme dropdown to reflect the saved theme
+    const themeSelect = document.getElementById('theme');
+    themeSelect.value = theme;  // Set the value of the select dropdown
   }
+
   // Apply text size settings
   const textSize = localStorage.getItem("textSize");
   if (textSize) {
     document.body.classList.add(textSize);
+
+    // Update the text size dropdown to reflect the saved text size
+    const textSizeSelect = document.getElementById('text-size');
+    textSizeSelect.value = textSize;  // Set the value of the select dropdown
   }
 }
 
-// Toggle dark mode
+// Toggle dark mode (for use on other pages)
 function toggleDark() {
   const element = document.body;
   element.classList.toggle("dark-mode");
 
   // Save theme preference
-  const currentTheme = element.classList.contains("dark-mode") ? "dark-mode" : "";
+  const currentTheme = element.classList.contains("dark-mode") ? "dark-mode" : "light-mode";
   localStorage.setItem("theme", currentTheme);
 }
 
@@ -36,14 +45,28 @@ function stickFunction() {
   }
 }
 
-// Change text size
-function setTextSize(size) {
+// Save text size preference
+function saveTextSize() {
+  const textSize = document.getElementById('text-size').value;
   const element = document.body;
   
-  // Apply the selected text size class after clearing previous
+  // Apply the selected text size class after clearing previous ones
   element.classList.remove("small-text", "standard-text", "large-text");
-  element.classList.add(`${size}-text`);
+  element.classList.add(textSize);
   
-  // Save text size preference
-  localStorage.setItem("textSize", `${size}-text`);
+  // Save text size preference in localStorage
+  localStorage.setItem("textSize", textSize);
+}
+
+// Save theme preference
+function saveTheme() {
+  const theme = document.getElementById('theme').value;
+  const element = document.body;
+
+  // Apply the selected theme class
+  element.classList.remove("light-mode", "dark-mode");
+  element.classList.add(theme);
+
+  // Save theme preference in localStorage
+  localStorage.setItem("theme", theme);
 }
