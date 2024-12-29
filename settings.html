@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings</title>
+  <link rel="stylesheet" href="new_style.css">
+  <style>
+
+    .settings-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    #navbar a.active {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .cream #navbar a.active {
+      background-color: #e4d3c4;
+      color: #24005E;
+    }
+
+    .dark-mode #navbar a.active {
+        background-color: #555;
+        color: #F0F4F9;
+    }
+
+  </style>
+</head>
+<body>
+  <img src="disability-pride-flag.png" alt="Page Logo" class="image">
+
+  <div id="navbar">
+    <ul>
+      <li><a href="new_home.html">Home</a></li>
+      <li><a href="new_resources.html">Campus Resources</a></li>
+      <li><a href="new_bonus.html">Club Projects</a></li>
+      <li><a href="new_calendar.html">Calendar</a></li>
+      <li><a class="active" href="settings.html">Settings</a></li>
+    </ul>
+  </div>
+
+  <h1 class="title">Settings</h1>
+
+  <div class="settings-container">
+    <div class="container">
+      <h2>Theme</h2>
+      <div id="theme-buttons">
+        <button class="theme-button" id="light-mode" onclick="setTheme('light-mode')">Light Mode</button>
+        <button class="theme-button" id="dark-mode" onclick="setTheme('dark-mode')">Dark Mode</button>
+        <button class="theme-button" id="cream" onclick="setTheme('cream')">Cream</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Text Size</h2>
+      <label for="text-size" class="title">Current Text Size: <span id="text-size-output" class="text-size-output">16</span><br></label> 
+      <input type="range" id="text-size-range" min="8" max="35" value="16" step="1" onchange="saveTextSize()" />
+    </div>
+  </div>
+
+  <script src="dsr_settings.js"></script>
+</body>
+</html>
