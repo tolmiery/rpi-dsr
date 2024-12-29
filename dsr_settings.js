@@ -5,7 +5,6 @@ function applySavedSettings() {
   if (theme) {
     document.body.classList.add(theme);
 
-    // Update the theme dropdown to reflect the saved theme
     const themeSelect = document.getElementById('theme');
     if (themeSelect) {
       themeSelect.value = theme; 
@@ -13,31 +12,39 @@ function applySavedSettings() {
   }
 
   // Apply text size settings
-  const textSize = localStorage.getItem("textSize");
-  if (textSize) {
-    document.body.classList.add(textSize);
+  const savedTextSize = localStorage.getItem('textSize');
+  if (savedTextSize) {
+    // Set the font size on the body and other elements
+    document.body.style.fontSize = `${savedTextSize}px`;
+    document.querySelectorAll('.text-element').forEach(function(el) {
+      el.style.fontSize = `${savedTextSize}px`; // Apply font size to specific elements
+    });
 
-    // Update the text size dropdown to reflect the saved text size
-    const textSizeSelect = document.getElementById('text-size');
-    if (textSizeSelect) {
-      textSizeSelect.value = textSize;  
+    // Update the text size output
+    document.getElementById('text-size-output').textContent = `${savedTextSize}`;
+    // Update the range input's value 
+    const textSizeRange = document.getElementById('text-size-range');
+    if (textSizeRange) {
+      textSizeRange.value = savedTextSize; 
     }
   }
 }
 
 // Save text size preference
 function saveTextSize() {
-  const textSize = document.getElementById('text-size').value;
-  const element = document.body;
-
-  // Remove any existing text size classes
-  element.classList.remove("small-text", "standard-text", "large-text");
-
-  // Apply the selected text size class
-  element.classList.add(textSize);
-
-  // Save text size preference in localStorage
-  localStorage.setItem("textSize", textSize);
+  const textSize = document.getElementById('text-size-range').value;
+  
+  // Update the displayed text size output
+  document.getElementById('text-size-output').textContent = `${textSize}`;
+  
+  // Apply the text size to the body and specific elements
+  document.body.style.fontSize = `${textSize}px`;
+  document.querySelectorAll('.text-element').forEach(function(el) {
+    el.style.fontSize = `${textSize}px`; // Apply font size to specific elements
+  });
+  
+  // Save text size in localStorage
+  localStorage.setItem('textSize', textSize);
 }
 
 // Save theme preference
@@ -46,7 +53,7 @@ function saveTheme() {
   const element = document.body;
 
   // Remove any existing theme classes
-  element.classList.remove("light-mode", "dark-mode");
+  element.classList.remove("light-mode", "dark-mode", "cream");
 
   // Apply the selected theme class
   element.classList.add(theme);
@@ -68,3 +75,13 @@ function stickFunction() {
     navbar.classList.remove("sticky");
   }
 }
+
+// Call on page load
+window.onload = function() {
+  applySavedSettings();
+  const textSizeRange = document.getElementById('text-size-range');
+  if (textSizeRange) {
+    textSizeRange.addEventListener('input', saveTextSize); 
+  }
+};
+
