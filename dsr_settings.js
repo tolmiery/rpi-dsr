@@ -5,10 +5,14 @@ function applySavedSettings() {
   if (theme) {
     document.body.classList.add(theme);
 
-    const themeSelect = document.getElementById('theme');
-    if (themeSelect) {
-      themeSelect.value = theme; 
-    }
+    // Set the active class on the theme buttons
+    const buttons = document.querySelectorAll('.theme-button');
+    buttons.forEach(button => {
+      button.classList.remove('active');
+      if (button.id === theme) {
+        button.classList.add('active');
+      }
+    });
   }
 
   // Apply text size settings
@@ -47,9 +51,8 @@ function saveTextSize() {
   localStorage.setItem('textSize', textSize);
 }
 
-// Save theme preference
-function saveTheme() {
-  const theme = document.getElementById('theme').value;
+// Save theme preference from buttons
+function saveTheme(theme) {
   const element = document.body;
 
   // Remove any existing theme classes
@@ -60,6 +63,19 @@ function saveTheme() {
 
   // Save theme preference in localStorage
   localStorage.setItem("theme", theme);
+}
+
+// Set theme when a button is clicked
+function setTheme(theme) {
+  // Save the selected theme and update UI
+  saveTheme(theme);
+
+  // Update the active state of the buttons
+  const buttons = document.querySelectorAll('.theme-button');
+  buttons.forEach(button => {
+    button.classList.remove('active');
+  });
+  document.getElementById(theme).classList.add('active');
 }
 
 // Sticky Navbar
@@ -79,9 +95,17 @@ function stickFunction() {
 // Call on page load
 window.onload = function() {
   applySavedSettings();
+
   const textSizeRange = document.getElementById('text-size-range');
   if (textSizeRange) {
     textSizeRange.addEventListener('input', saveTextSize); 
   }
-};
 
+  // Add event listeners for theme buttons
+  const themeButtons = document.querySelectorAll('.theme-button');
+  themeButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      setTheme(button.id);
+    });
+  });
+};

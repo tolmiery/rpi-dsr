@@ -78,15 +78,24 @@ body {
 
   
   #navbar a:hover {
-    background-color: #F0F4F9;
+    background-color: #FFF;
     color: black;
   }
 
+  .dark-mode #navbar a:hover {
+    background-color: #F0F4F9;
+  }
+
+  .cream #navbar a:hover {
+    color: #24005E;
+    background-color: #FFF7F0;
+  }
   img {
     width: 100%;
     height: auto;
     display: block;
   }
+
   #navbar ul {
     list-style-type: none;
     margin: 0;
@@ -99,14 +108,12 @@ body {
     float: left;
   }
   
-
   input[type="range"] {
     width: 80%;
     height: 15px; 
     margin-top: 20px;
     -webkit-appearance: none;
     appearance: none;
-    background: #F0F4F9; 
     border-radius: 10px; 
     outline: none; 
   }
@@ -129,4 +136,72 @@ body {
     cursor: pointer;
   }
 
+  .theme-button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border: none; 
+  border-radius: 5px; 
+  transition: background-color 0.3s ease, color 0.3s ease; /* Optional smooth transition for button hover */
+  }
 
+  input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  }
+
+  /* Light Mode Styles */
+  .light-mode .theme-button {
+  background-color: #F0F4F9;
+  color: #000;
+  }
+
+  .light-mode input[type="range"] {
+  background-color: #ddd;
+  }
+
+  .light-mode .theme-button.active {
+  background-color: #ddd;
+  color: black;
+  }
+
+  /* Dark Mode Styles */
+  .dark-mode .theme-button {
+  background-color: #333;
+  color: #fff;
+  }
+
+  .dark-mode input[type="range"] {
+  background-color: #555;
+  }
+
+  .dark-mode .theme-button.active {
+  background-color: #555;
+  color: white;
+  }
+
+
+  /* Cream Mode Styles */
+  .cream .theme-button {
+  background-color: #ffeee0;
+  color: #24005E;
+  }
+
+  .cream input[type="range"] {
+  background-color: #e4d3c4;
+  }
+
+  .cream .theme-button.active {
+  background-color: #e4d3c4;
+  color: #24005E;
+  }
+
+  .cream input[type="range"]::-webkit-slider-thumb {
+      background: #CE717F;
+  }
+
+  .cream input[type="range"]::-moz-range-thumb {
+      background: #CE717F;
+  }
