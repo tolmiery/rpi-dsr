@@ -31,6 +31,11 @@
         color: #F0F4F9;
     }
 
+    .custom-theme #navbar a.active {
+        background-color: var(--button-active-color);
+        color: var(--text-color);
+    }
+
   </style>
 </head>
 <body>
@@ -55,7 +60,29 @@
         <button class="theme-button" id="light-mode" onclick="setTheme('light-mode')">Light Mode</button>
         <button class="theme-button" id="dark-mode" onclick="setTheme('dark-mode')">Dark Mode</button>
         <button class="theme-button" id="cream" onclick="setTheme('cream')">Cream</button>
+        <button class="theme-button" id="custom-theme" onclick="setTheme('custom-theme')">Custom Theme</button>
       </div>
+    </div>
+
+    <div class="container">
+        <h2>Customize Theme</h2>
+        <label for="background-color-picker">Background Color:</label>
+        <input type="color" id="background-color-picker" value="#2A3F54" onchange="updateCustomTheme()" /><br>
+    
+        <label for="text-color-picker">Text Color:</label>
+        <input type="color" id="text-color-picker" value="#EDEDED" onchange="updateCustomTheme()" /><br>
+    
+        <label for="container-background-picker">Container Background Color:</label>
+        <input type="color" id="container-background-picker" value="#1A252F" onchange="updateCustomTheme()" /><br>
+    
+        <label for="button-color-picker">Button Background Color:</label>
+        <input type="color" id="button-color-picker" value="#39AD7D" onchange="updateCustomTheme()" /><br>
+    
+        <label for="button-active-color-picker">Active Button Background Color:</label>
+        <input type="color" id="button-active-color-picker" value="#555555" onchange="updateCustomTheme()" /><br>
+    
+        <label for="navbar-color-picker">Navbar Background Color:</label>
+        <input type="color" id="navbar-color-picker" value="#333333" onchange="updateCustomTheme()" /><br>
     </div>
 
     <div class="container">
