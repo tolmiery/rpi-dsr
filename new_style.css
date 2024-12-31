@@ -47,6 +47,9 @@ body {
     background-color: #333;
   }
   
+.cream #navbar {
+    background-color: #24005E;
+  }
   /* Navbar links */
   #navbar a {
     float: left;
@@ -55,6 +58,10 @@ body {
     text-align: center;
     padding: 14px;
     text-decoration: none;
+  }
+
+  .cream #navbar a {
+    color: #FFF7F0;
   }
   
   /* Page content */
@@ -88,7 +95,7 @@ body {
     color: #24005E;
     background-color: #FFF7F0;
   }
-  
+
   img {
     width: 100%;
     height: auto;
@@ -101,6 +108,10 @@ body {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+  }
+
+  .cream #navbar ul {
+    background-color: #24005E;
   }
   
   #navbar li {
