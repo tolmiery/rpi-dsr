@@ -89,6 +89,19 @@ function saveTheme(theme) {
 function setTheme(theme) {
   // Save the selected theme and update UI
   saveTheme(theme);
+  // Check if the custom theme is selected
+  if (theme === "custom-theme") {
+    // Apply custom theme styles from localStorage or fallback to default values
+    const savedColors = JSON.parse(localStorage.getItem('customThemeColors'));
+    if (savedColors) {
+      document.documentElement.style.setProperty('--background-color', savedColors.backgroundColor);
+      document.documentElement.style.setProperty('--text-color', savedColors.textColor);
+      document.documentElement.style.setProperty('--container-background', savedColors.containerColor);
+      document.documentElement.style.setProperty('--button-color', savedColors.buttonColor);
+      document.documentElement.style.setProperty('--button-active-color', savedColors.buttonActiveColor);
+      document.documentElement.style.setProperty('--navbar-color', savedColors.navbarColor);
+    }
+  }
 
   // Update the active state of the buttons
   const buttons = document.querySelectorAll('.theme-button');
@@ -97,6 +110,7 @@ function setTheme(theme) {
   });
   document.getElementById(theme).classList.add('active');
 }
+
 
 // Update custom theme colors
 function updateCustomTheme() {
