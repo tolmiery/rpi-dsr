@@ -4,7 +4,6 @@ function applySavedSettings() {
   const theme = localStorage.getItem("theme");
   if (theme) {
       document.body.classList.add(theme);
-
       // Set the active class on the theme buttons
       const buttons = document.querySelectorAll('.theme-button');
       buttons.forEach(button => {
@@ -20,9 +19,9 @@ function applySavedSettings() {
           if (savedColors) {
               document.documentElement.style.setProperty('--background-color', savedColors.backgroundColor);
               document.documentElement.style.setProperty('--text-color', savedColors.textColor);
-              document.documentElement.style.setProperty('--container-background', savedColors.containerColor);
+              document.documentElement.style.setProperty('--container-color', savedColors.containerColor);
               document.documentElement.style.setProperty('--button-color', savedColors.buttonColor);
-              document.documentElement.style.setProperty('--button-active-color', savedColors.buttonActiveColor);
+              document.documentElement.style.setProperty('--bactive-color', savedColors.bactiveColor);
               document.documentElement.style.setProperty('--navbar-color', savedColors.navbarColor);
           }
       }
@@ -52,32 +51,20 @@ function applySavedSettings() {
 // Save text size preference
 function saveTextSize() {
   const textSize = document.getElementById('text-size-range').value;
-  
-  // Update the displayed text size output
   document.getElementById('text-size-output').textContent = `${textSize}`;
-  
-  // Apply the text size to the body and specific elements
-  
   document.body.style.fontSize = `${textSize}px`;
   document.querySelectorAll('.text-element').forEach(function(el) {
-    el.style.fontSize = `${textSize}px`; // Apply font size to specific elements
+    el.style.fontSize = `${textSize}px`; 
   });
 
-  // Save text size in localStorage
   localStorage.setItem('textSize', textSize);
 }
 
 // Save theme preference from buttons
 function saveTheme(theme) {
   const element = document.body;
-
-  // Remove any existing theme classes
   element.classList.remove("light-mode", "dark-mode", "cream", "custom-theme");
-
-  // Apply the selected theme class
   element.classList.add(theme);
-
-  // Save theme preference in localStorage
   localStorage.setItem("theme", theme);
 }
 
@@ -87,17 +74,15 @@ function setTheme(theme) {
   saveTheme(theme);
   // Check if the custom theme is selected
   if (theme === "custom-theme") {
-    // Apply custom theme styles from localStorage or fallback to default values
-    const savedColors = JSON.parse(localStorage.getItem('customThemeColors'));
-    if (savedColors) {
-      document.documentElement.style.setProperty('--background-color', savedColors.backgroundColor);
-      document.documentElement.style.setProperty('--text-color', savedColors.textColor);
-      document.documentElement.style.setProperty('--container-background', savedColors.containerColor);
-      document.documentElement.style.setProperty('--button-color', savedColors.buttonColor);
-      document.documentElement.style.setProperty('--button-active-color', savedColors.buttonActiveColor);
-      document.documentElement.style.setProperty('--navbar-color', savedColors.navbarColor);
-    }
+  const savedColors = JSON.parse(localStorage.getItem('customThemeColors'));
+  if (savedColors) {
+    Object.keys(savedColors).forEach(key => {
+      if (savedColors[key]) {
+        document.documentElement.style.setProperty(`--${key.toLowerCase()}`, savedColors[key]);
+      }
+    });
   }
+}
 
   // Update the active state of the buttons
   const buttons = document.querySelectorAll('.theme-button');
@@ -107,10 +92,9 @@ function setTheme(theme) {
   document.getElementById(theme).classList.add('active');
 }
 
-
 // Update custom theme colors
 function updateCustomTheme() {
-  const colors = ['background', 'text', 'container', 'button', 'button-active', 'navbar'].reduce((acc, key) => {
+  const colors = ['background', 'text', 'container', 'button', 'bactive', 'navbar'].reduce((acc, key) => {
     acc[`${key}Color`] = document.getElementById(`${key}-color-picker`).value;
     document.documentElement.style.setProperty(`--${key}-color`, acc[`${key}Color`]);
     return acc;
@@ -147,7 +131,7 @@ window.onload = function() {
   });
 
   // Custom theme color pickers event listeners
-  ['background', 'text', 'container', 'button', 'button-active', 'navbar'].forEach(id => {
+  ['background', 'text', 'container', 'button', 'bactive', 'navbar'].forEach(id => {
     const picker = document.getElementById(`${id}-color-picker`);
     if (picker) picker.addEventListener('input', updateCustomTheme);
   });

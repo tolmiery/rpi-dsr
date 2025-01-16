@@ -42,7 +42,7 @@ body {
   }
   
   .custom-theme .container {
-    background-color: var(--container-background);
+    background-color: var(--container-color);
   }
 
 
@@ -239,15 +239,15 @@ body {
 }
 
 .custom-theme .theme-button.active {
-    background-color: var(--button-active-color);
+    background-color: var(--bactive-color);
 }
 
 .custom-theme input[type="range"]::-webkit-slider-thumb {
-  background: var(--button-active-color);
+  background: var(--bactive-color);
 }
 
 .custom-theme input[type="range"]::-moz-range-thumb {
-  background: var(--button-active-color);
+  background: var(--bactive-color);
 }
 
 .custom-theme input[type="range"] {
