@@ -24,7 +24,6 @@ function applySavedSettings() {
               document.documentElement.style.setProperty('--button-color', savedColors.buttonColor);
               document.documentElement.style.setProperty('--button-active-color', savedColors.buttonActiveColor);
               document.documentElement.style.setProperty('--navbar-color', savedColors.navbarColor);
-
           }
       }
   }
@@ -38,7 +37,10 @@ function applySavedSettings() {
       });
 
       // Update the text size output
-      
+      const textSizeOutput = document.getElementById('text-size-output');
+      if (textSizeOutput) {
+          textSizeOutput.textContent = savedTextSize;
+      }
       const textSizeRange = document.getElementById('text-size-range');
       if (textSizeRange) {
           textSizeRange.value = savedTextSize;
@@ -55,6 +57,7 @@ function saveTextSize() {
   document.getElementById('text-size-output').textContent = `${textSize}`;
   
   // Apply the text size to the body and specific elements
+  
   document.body.style.fontSize = `${textSize}px`;
   document.querySelectorAll('.text-element').forEach(function(el) {
     el.style.fontSize = `${textSize}px`; // Apply font size to specific elements
@@ -107,34 +110,14 @@ function setTheme(theme) {
 
 // Update custom theme colors
 function updateCustomTheme() {
-  const backgroundColor = document.getElementById('background-color-picker').value;
-  const textColor = document.getElementById('text-color-picker').value;
-  const containerColor = document.getElementById('container-background-picker').value;
-  const buttonColor = document.getElementById('button-color-picker').value;
-  const buttonActiveColor = document.getElementById('button-active-color-picker').value;
-  const navbarColor = document.getElementById('navbar-color-picker').value; // Navbar background color picker
+  const colors = ['background', 'text', 'container', 'button', 'button-active', 'navbar'].reduce((acc, key) => {
+    acc[`${key}Color`] = document.getElementById(`${key}-color-picker`).value;
+    document.documentElement.style.setProperty(`--${key}-color`, acc[`${key}Color`]);
+    return acc;
+  }, {});
 
-  // Update CSS variables for background, container, button, and navbar colors
-  document.documentElement.style.setProperty('--background-color', backgroundColor);
-  document.documentElement.style.setProperty('--text-color', textColor);  // Keep this if needed
-  document.documentElement.style.setProperty('--container-background', containerColor);
-  document.documentElement.style.setProperty('--button-color', buttonColor);
-  document.documentElement.style.setProperty('--button-active-color', buttonActiveColor);
-  document.documentElement.style.setProperty('--navbar-color', navbarColor); // Update navbar color
-
-  // Save to localStorage
-  localStorage.setItem('customThemeColors', JSON.stringify({
-      backgroundColor,
-      textColor,
-      containerColor,
-      buttonColor,
-      buttonActiveColor,
-      navbarColor
-  }));
-  saveTextSize();
+  localStorage.setItem('customThemeColors', JSON.stringify(colors));
 }
-
-
 
 // Sticky Navbar
 window.onscroll = function() { stickFunction() };
@@ -154,33 +137,18 @@ function stickFunction() {
 window.onload = function() {
   applySavedSettings();
 
+  // Text size range input listener
   const textSizeRange = document.getElementById('text-size-range');
-  if (textSizeRange) {
-    textSizeRange.addEventListener('input', saveTextSize); 
-  }
+  if (textSizeRange) textSizeRange.addEventListener('input', saveTextSize);
 
-  // Add event listeners for theme buttons
-  const themeButtons = document.querySelectorAll('.theme-button');
-  themeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      setTheme(button.id);
-    });
+  // Theme buttons event listener
+  document.querySelectorAll('.theme-button').forEach(button => {
+    button.addEventListener('click', () => setTheme(button.id));
   });
 
-  // Add event listeners for custom theme color pickers
-  const backgroundColorPicker = document.getElementById('background-color-picker');
-  const textColorPicker = document.getElementById('text-color-picker');
-  const containerColorPicker = document.getElementById('container-background-picker');
-  const buttonColorPicker = document.getElementById('button-color-picker');
-  const activeButtonColorPicker = document.getElementById('button-active-color-picker');
-  const navbarColorPicker = document.getElementById('navbar-color-picker');
-
-  if (backgroundColorPicker && textColorPicker && containerColorPicker && buttonColorPicker && activeButtonColorPicker && navbarColorPicker) {
-    backgroundColorPicker.addEventListener('input', updateCustomTheme);
-    textColorPicker.addEventListener('input', updateCustomTheme);
-    containerColorPicker.addEventListener('input', updateCustomTheme);
-    buttonColorPicker.addEventListener('input', updateCustomTheme);
-    activeButtonColorPicker.addEventListener('input', updateCustomTheme);
-    navbarColorPicker.addEventListener('input', updateCustomTheme);
-  }
+  // Custom theme color pickers event listeners
+  ['background', 'text', 'container', 'button', 'button-active', 'navbar'].forEach(id => {
+    const picker = document.getElementById(`${id}-color-picker`);
+    if (picker) picker.addEventListener('input', updateCustomTheme);
+  });
 };

@@ -44,11 +44,8 @@ body {
   .custom-theme .container {
     background-color: var(--container-background);
   }
-  
-  .custom-theme #navbar {
-    background-color: var(--navbar-color);
-  }
-  
+
+
 .title {                                                       
   text-align: center;                         
   text-transform: capitalize;                                           
@@ -57,12 +54,8 @@ body {
    /* Style the navbar */
 #navbar {
     width:100%;
-    background-color: #333;
   }
   
-.cream #navbar {
-    background-color: #24005E;
-  }
   /* Navbar links */
   #navbar a {
     float: left;
@@ -77,6 +70,10 @@ body {
     color: #FFF7F0;
   }
   
+  .custom-theme #navbar ul {
+    background-color: var(--navbar-color);
+  }
+
   /* Page content */
   .content {
     padding: 0px;
