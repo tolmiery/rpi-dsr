@@ -9,11 +9,16 @@
 
     .settings-container {
         display: flex;
+        flex-wrap: wrap; 
         justify-content: space-between;
+        gap: 20px; 
+        padding: 10px; 
     }
 
     .container {
-        width: 50%;
+        flex: 1 1 45%; 
+        min-width: 250px; 
+        box-sizing: border-box;
     }
 
     #navbar a.active {
@@ -64,24 +69,25 @@
     </div>
 
     <div class="container">
-        <h2>Customize Theme</h2>
-        <label for="background-color-picker">Background Color:</label>
-        <input type="color" id="background-color-picker" value="#2A3F54" onchange="updateCustomTheme()" /><br>
-    
-        <label for="text-color-picker">Text Color:</label>
-        <input type="color" id="text-color-picker" value="#EDEDED" onchange="updateCustomTheme()" /><br>
-    
-        <label for="container-color-picker">Container Background Color:</label>
-        <input type="color" id="container-color-picker" value="#1A252F" onchange="updateCustomTheme()" /><br>
-    
-        <label for="button-color-picker">Button Background Color:</label>
-        <input type="color" id="button-color-picker" value="#39AD7D" onchange="updateCustomTheme()" /><br>
-    
-        <label for="bactive-color-picker">Active Button Background Color:</label>
-        <input type="color" id="bactive-color-picker" value="#555555" onchange="updateCustomTheme()" /><br>
-    
-        <label for="navbar-color-picker">Navbar Background Color:</label>
-        <input type="color" id="navbar-color-picker" value="#333333" onchange="updateCustomTheme()" /><br>
+      <h2>Customize Theme</h2>
+      <label for="background-color-picker">Background Color:</label>
+      <input type="color" id="background-color-picker" value="#2A3F54" onchange="updateCustomTheme('background-color')"/><br>
+      
+      <label for="text-color-picker">Text Color:</label>
+      <input type="color" id="text-color-picker" value="#EDEDED" onchange="updateCustomTheme('text-color')"/><br>
+      
+      <label for="container-color-picker">Container Background Color:</label>
+      <input type="color" id="container-color-picker" value="#1A252F" onchange="updateCustomTheme('container-color')"/><br>
+      
+      <label for="button-color-picker">Button Background Color:</label>
+      <input type="color" id="button-color-picker" value="#39AD7D" onchange="updateCustomTheme('button-color')"/><br>
+      
+      <label for="bactive-color-picker">Active Button Background Color:</label>
+      <input type="color" id="bactive-color-picker" value="#555555" onchange="updateCustomTheme('bactive-color')"/><br>
+      
+      <label for="navbar-color-picker">Navbar Background Color:</label>
+      <input type="color" id="navbar-color-picker" value="#333333" onchange="updateCustomTheme('navbar-color')"/><br>
+      
     </div>
 
     <div class="container">

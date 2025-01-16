@@ -78,7 +78,7 @@ function setTheme(theme) {
   if (savedColors) {
     Object.keys(savedColors).forEach(key => {
       if (savedColors[key]) {
-        document.documentElement.style.setProperty(`--${key.toLowerCase()}`, savedColors[key]);
+        document.documentElement.style.setProperty(`--${key}`, savedColors[key]);
       }
     });
   }
