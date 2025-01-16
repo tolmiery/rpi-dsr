@@ -25,13 +25,6 @@ function applySavedSettings() {
               document.documentElement.style.setProperty('--button-active-color', savedColors.buttonActiveColor);
               document.documentElement.style.setProperty('--navbar-color', savedColors.navbarColor);
 
-              // Update color pickers with saved values
-              document.getElementById('background-color-picker').value = savedColors.backgroundColor;
-              document.getElementById('text-color-picker').value = savedColors.textColor;
-              document.getElementById('container-background-picker').value = savedColors.containerColor;
-              document.getElementById('button-color-picker').value = savedColors.buttonColor;
-              document.getElementById('button-active-color-picker').value = savedColors.buttonActiveColor;
-              document.getElementById('navbar-color-picker').value = savedColors.navbarColor;
           }
       }
   }
@@ -45,7 +38,7 @@ function applySavedSettings() {
       });
 
       // Update the text size output
-      document.getElementById('text-size-output').textContent = `${savedTextSize}`;
+      
       const textSizeRange = document.getElementById('text-size-range');
       if (textSizeRange) {
           textSizeRange.value = savedTextSize;
@@ -138,6 +131,7 @@ function updateCustomTheme() {
       buttonActiveColor,
       navbarColor
   }));
+  saveTextSize();
 }
 
 

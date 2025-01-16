@@ -36,6 +36,19 @@ body {
     background-color: #FFF7F0;
   }
   
+  .custom-theme {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .custom-theme .container {
+    background-color: var(--container-background);
+  }
+  
+  .custom-theme #navbar {
+    background-color: var(--navbar-color);
+  }
+  
 .title {                                                       
   text-align: center;                         
   text-transform: capitalize;                                           
@@ -213,20 +226,6 @@ body {
 
   .cream input[type="range"]::-moz-range-thumb {
       background: #CE717F;
-  }
-
-
-  .custom-theme {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  .custom-theme .container {
-    background-color: var(--container-background);
-  }
-  
-  .custom-theme #navbar {
-    background-color: var(--navbar-color);
   }
   
   .custom-theme #navbar a {
