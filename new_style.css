@@ -1,259 +1,206 @@
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    word-wrap: break-word; 
-  }
-
-  .container {
-    padding: 35px;
-    margin: 20px;
-    border-radius: 5px;
-  }
-
-  .dark-mode {
-    background-color: black;
-    color: #F0F4F9;
-  }
-
-  .dark-mode .container {
-    background-color: rgb(19, 19, 19);
-  }
-
-  .light-mode {
-    background-color: #F0F4F9;
-    color: black;
-  }
-
-  .light-mode .container {
-    background-color: #FFFFFF;
-  }
-
-  .cream {
-    background-color: #ffeee0;
-    color: #24005E;
-  }
-
-  .cream .container {
-    background-color: #FFF7F0;
-  }
-  
-  .custom-theme {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-  
-  .custom-theme .container {
-    background-color: var(--container-color);
-  }
-
-
-.title {                                                       
-  text-align: center;                         
-  text-transform: capitalize;                                           
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  word-wrap: break-word;
 }
 
-   /* Style the navbar */
-#navbar {
-    width:100%
-  }
-  
-  /* Navbar links */
-  #navbar a {
-    display: inline-block;
-    color: #F0F4F9;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-  }
+.container {
+  padding: 35px;
+  margin: 20px;
+  border-radius: 5px;
+}
 
-  .cream #navbar a {
-    color: #FFF7F0;
-  }
-  
-  .custom-theme #navbar ul {
-    background-color: var(--navbar-color);
-  }
-
-  /* Page content */
-  .content {
-    padding: 0px;
-  }
-  
-  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-  .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
-  
-  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .content {
-    padding-top: 40px;
-  } 
-
-  
-  #navbar a:hover {
-    background-color: #FFF;
-    color: black;
-  }
-
-  .dark-mode #navbar a:hover {
-    background-color: #F0F4F9;
-  }
-
-  .cream #navbar a:hover {
-    color: #24005E;
-    background-color: #FFF7F0;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  #navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-  }
-
-  .cream #navbar ul {
-    background-color: #24005E;
-  }
-  
-  #navbar li {
-    float: left;
-  }
-  
-  input[type="range"] {
-    width: 80%;
-    height: 15px; 
-    margin-top: 20px;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 10px; 
-    outline: none; 
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px; 
-    height: 25px; 
-    background: #39AD7D;
-    border-radius: 50%; 
-    cursor: pointer;
-  }
-
-  input[type="range"]::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #39AD7D;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-
-  .theme-button {
-    font-size: inherit;
-    padding: .75em 1em;
-    margin: 0.3em;
-    cursor: pointer;
-    border: none; 
-    border-radius: 5px; 
-  }
-
-  input[type="range"] {
-    width: 100%;
-    height: 8px;
-    border-radius: 5px;
-  }
-
-  /* Light Mode Styles */
-  .light-mode .theme-button {
+/* Theme Base Styles */
+.dark-mode {
+  background-color: black;
+  color: #F0F4F9;
+}
+.light-mode {
   background-color: #F0F4F9;
-  color: #000;
-  }
-
-  .light-mode input[type="range"] {
-  background-color: #ddd;
-  }
-
-  .light-mode .theme-button.active {
-  background-color: #ddd;
   color: black;
-  }
-
-  /* Dark Mode Styles */
-  .dark-mode .theme-button {
-  background-color: #333;
-  color: #fff;
-  }
-
-  .dark-mode input[type="range"] {
-  background-color: #555;
-  }
-
-  .dark-mode .theme-button.active {
-  background-color: #555;
-  color: white;
-  }
-
-
-  /* Cream Mode Styles */
-  .cream .theme-button {
+}
+.cream {
   background-color: #ffeee0;
   color: #24005E;
-  }
+}
+.custom-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 
-  .cream input[type="range"] {
-  background-color: #e4d3c4;
-  }
+/* Theme Container Styles */
+.dark-mode .container {
+  background-color: rgb(19, 19, 19);
+}
+.light-mode .container {
+  background-color: #FFFFFF;
+}
+.cream .container {
+  background-color: #FFF7F0;
+}
+.custom-theme .container {
+  background-color: var(--container-color);
+}
 
-  .cream .theme-button.active {
+.title {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+
+#navbar {
+  width: 100%;
+}
+#navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+#navbar a {
+  display: inline-block;
+  color: #F0F4F9;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+#navbar a:hover {
+  background-color: #FFF;
+  color: black;
+}
+#navbar li {
+  float: left;
+}
+
+.cream #navbar a {
+  color: #FFF7F0;
+}
+.cream #navbar a:hover {
+  color: #24005E;
+  background-color: #FFF7F0;
+}
+.cream #navbar ul {
+  background-color: #24005E;
+}
+
+.custom-theme #navbar a {
+  color: var(--text-color);
+}
+.custom-theme #navbar a:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+.custom-theme #navbar ul {
+  background-color: var(--navbar-color);
+}
+
+/* Sticky Navbar */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.sticky + .content {
+  padding-top: 40px;
+}
+
+/* Images */
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Sliders */
+input[type="range"] {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  margin-top: 20px;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: #39AD7D;
+}
+
+/* Theme Buttons */
+.theme-button {
+  font-size: inherit;
+  padding: 0.75em 1em;
+  margin: 0.3em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Light Mode */
+.light-mode .theme-button {
+  background-color: #F0F4F9;
+  color: #000;
+}
+.light-mode .theme-button.active {
+  background-color: #ddd;
+  color: black;
+}
+.light-mode input[type="range"] {
+  background-color: #ddd;
+}
+
+/* Dark Mode */
+.dark-mode .theme-button {
+  background-color: #333;
+  color: #fff;
+}
+.dark-mode .theme-button.active {
+  background-color: #555;
+  color: white;
+}
+.dark-mode input[type="range"] {
+  background-color: #555;
+}
+
+/* Cream Mode */
+.cream .theme-button {
+  background-color: #ffeee0;
+  color: #24005E;
+}
+.cream .theme-button.active {
   background-color: #e4d3c4;
   color: #24005E;
-  }
-
-  .cream input[type="range"]::-webkit-slider-thumb {
-      background: #CE717F;
-  }
-
-  .cream input[type="range"]::-moz-range-thumb {
-      background: #CE717F;
-  }
-  
-  .custom-theme #navbar a {
-    color: var(--text-color);
-  }
-  
-  .custom-theme #navbar a:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
-  }
-  
-  .custom-theme .theme-button {
-    background-color: var(--button-color);
+}
+.cream input[type="range"] {
+  background-color: #e4d3c4;
+}
+.cream input[type="range"]::-webkit-slider-thumb,
+.cream input[type="range"]::-moz-range-thumb {
+  background: #CE717F;
 }
 
+/* Custom Theme */
+.custom-theme .theme-button {
+  background-color: var(--button-color);
+}
 .custom-theme .theme-button.active {
-    background-color: var(--bactive-color);
+  background-color: var(--bactive-color);
 }
-
-.custom-theme input[type="range"]::-webkit-slider-thumb {
-  background: var(--bactive-color);
+.custom-theme input[type="range"] {
+  background-color: var(--button-color);
 }
-
+.custom-theme input[type="range"]::-webkit-slider-thumb,
 .custom-theme input[type="range"]::-moz-range-thumb {
   background: var(--bactive-color);
 }
 
-.custom-theme input[type="range"] {
-  background-color: var(--button-color);
-  }
-
+/* Loading Screen */
 #loading-screen {
   position: fixed;
   top: 0;
@@ -262,7 +209,6 @@ body {
   height: 100vh;
   z-index: 9999;
 }
-
 #page-content {
   opacity: 0;
   transition: opacity 0.4s ease;

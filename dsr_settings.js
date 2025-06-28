@@ -114,12 +114,13 @@ function updateCustomTheme() {
   localStorage.setItem('customThemeColors', JSON.stringify(colors));
 }
 
-// Sticky Navbar
+// Setup sticky navbar functionality
 let lastScrollY = window.scrollY;
-const navbar = document.getElementById("navbar");
-const navbarOffset = navbar.offsetTop;
-
 function stickFunction() {
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return; // Exit if navbar doesn't exist
+
+  const navbarOffset = navbar.offsetTop;
   const currentScrollY = window.scrollY;
 
   if (currentScrollY > lastScrollY && currentScrollY >= navbarOffset) {
@@ -132,12 +133,22 @@ function stickFunction() {
 
   lastScrollY = currentScrollY;
 }
-
 window.addEventListener("scroll", stickFunction);
+
+function highlightActiveLink() {
+  const links = document.querySelectorAll('#navbar a');
+  const currentPage = location.pathname.split('/').pop();
+  links.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPage) {
+      link.classList.add('active');
+    }
+  });
+}
 
 
 // Call on page load
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function () {
   applySavedSettings();
 
   // Text size range input listener
@@ -154,21 +165,30 @@ window.onload = function() {
     const picker = document.getElementById(`${id}-color-picker`);
     if (picker) picker.addEventListener('input', updateCustomTheme);
   });
-};
 
-// Help cope with FOUC issue
-document.addEventListener("DOMContentLoaded", function () {
-  applySavedSettings();
+  // Load header HTML and give enough time to get around FOUC
+  const headerPlaceholder = document.getElementById("header-placeholder");
+  if (headerPlaceholder) {
+    fetch("header.html")
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to load header");
+        return response.text();
+      })
+      .then(html => {
+        headerPlaceholder.innerHTML = html;
+        highlightActiveLink();
+      })
+  }
 
   const loadingScreen = document.getElementById("loading-screen");
   const pageContent = document.getElementById("page-content");
 
-  // Small delay to ensure styles are applied before showing
-  setTimeout(() => {
-    loadingScreen.style.display = "none";
-    pageContent.style.display = "block";
-    requestAnimationFrame(() => {
+  if (loadingScreen && pageContent) {
+    // Delay before showing content to get around FOUC
+    setTimeout(() => {
+      loadingScreen.style.display = "none";
+      pageContent.style.display = "block";
       pageContent.style.opacity = "1";
-    });
-  }, 50);
+    }, 100); 
+  }
 });
