@@ -1,8 +1,9 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word; 
   }
-  
+
   .container {
     padding: 35px;
     margin: 20px;
@@ -53,13 +54,12 @@ body {
 
    /* Style the navbar */
 #navbar {
-    width:100%;
+    width:100%
   }
   
   /* Navbar links */
   #navbar a {
-    float: left;
-    display: block;
+    display: inline-block;
     color: #F0F4F9;
     text-align: center;
     padding: 14px;
@@ -253,3 +253,17 @@ body {
 .custom-theme input[type="range"] {
   background-color: var(--button-color);
   }
+
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
+
+#page-content {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}

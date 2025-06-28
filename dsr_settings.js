@@ -15,16 +15,8 @@ function applySavedSettings() {
 
       // Apply custom theme colors if custom theme is selected
       if (theme === "custom-theme") {
-          const savedColors = JSON.parse(localStorage.getItem('customThemeColors'));
-          if (savedColors) {
-              document.documentElement.style.setProperty('--background-color', savedColors.backgroundColor);
-              document.documentElement.style.setProperty('--text-color', savedColors.textColor);
-              document.documentElement.style.setProperty('--container-color', savedColors.containerColor);
-              document.documentElement.style.setProperty('--button-color', savedColors.buttonColor);
-              document.documentElement.style.setProperty('--bactive-color', savedColors.bactiveColor);
-              document.documentElement.style.setProperty('--navbar-color', savedColors.navbarColor);
-          }
-      }
+        customHelper();
+    }
   }
 
   // Apply text size settings
@@ -60,6 +52,32 @@ function saveTextSize() {
   localStorage.setItem('textSize', textSize);
 }
 
+function customHelper() {
+  let savedColors = JSON.parse(localStorage.getItem('customThemeColors'));
+  // If no custom colors are saved, set default colors
+  if (!savedColors) {
+    savedColors = {
+      backgroundColor: "#2A3F54",
+      textColor: "#EDEDED",
+      containerColor: "#1A252F",
+      buttonColor: "#39AD7D",
+      bactiveColor: "#555555",
+      navbarColor: "#333333"
+    };
+    localStorage.setItem('customThemeColors', JSON.stringify(savedColors));
+  }
+
+  // Apply the theme colors and update pickers
+  Object.entries(savedColors).forEach(([key, value]) => {
+    const color = `--${key.replace("Color", "")}-color`;
+    document.documentElement.style.setProperty(color, value);
+
+    const pickerId = `${key.replace("Color", "")}-color-picker`;
+    const picker = document.getElementById(pickerId);
+    if (picker) picker.value = value;
+  });
+}
+
 // Save theme preference from buttons
 function saveTheme(theme) {
   const element = document.body;
@@ -74,14 +92,7 @@ function setTheme(theme) {
   saveTheme(theme);
   // Check if the custom theme is selected
   if (theme === "custom-theme") {
-  const savedColors = JSON.parse(localStorage.getItem('customThemeColors'));
-  if (savedColors) {
-    Object.keys(savedColors).forEach(key => {
-      if (savedColors[key]) {
-        document.documentElement.style.setProperty(`--${key.toLowerCase()}`, savedColors[key]);
-      }
-    });
-  }
+  customHelper();
 }
 
   // Update the active state of the buttons
@@ -104,18 +115,26 @@ function updateCustomTheme() {
 }
 
 // Sticky Navbar
-window.onscroll = function() { stickFunction() };
-
+let lastScrollY = window.scrollY;
 const navbar = document.getElementById("navbar");
-const sticky = navbar.offsetTop;
+const navbarOffset = navbar.offsetTop;
 
 function stickFunction() {
-  if (window.scrollY >= sticky) {
+  const currentScrollY = window.scrollY;
+
+  if (currentScrollY > lastScrollY && currentScrollY >= navbarOffset) {
+    // Scrolling down
     navbar.classList.add("sticky");
   } else {
+    // Scrolling up
     navbar.classList.remove("sticky");
   }
+
+  lastScrollY = currentScrollY;
 }
+
+window.addEventListener("scroll", stickFunction);
+
 
 // Call on page load
 window.onload = function() {
@@ -136,3 +155,20 @@ window.onload = function() {
     if (picker) picker.addEventListener('input', updateCustomTheme);
   });
 };
+
+// Help cope with FOUC issue
+document.addEventListener("DOMContentLoaded", function () {
+  applySavedSettings();
+
+  const loadingScreen = document.getElementById("loading-screen");
+  const pageContent = document.getElementById("page-content");
+
+  // Small delay to ensure styles are applied before showing
+  setTimeout(() => {
+    loadingScreen.style.display = "none";
+    pageContent.style.display = "block";
+    requestAnimationFrame(() => {
+      pageContent.style.opacity = "1";
+    });
+  }, 50);
+});

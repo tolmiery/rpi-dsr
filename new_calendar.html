@@ -12,30 +12,33 @@
   </style>
   <title>Club Calendar</title>
 </head>
-<body onload="applySavedSettings()">
+<body>
+  <div id="loading-screen"></div> <!-- overlay -->
+  <div id="page-content" style="display: none;">
+    <div class="image">
+      <img src="disability-pride-flag.png" alt="Page Logo">
+    </div>
 
-  <div class="image">
-    <img src="disability-pride-flag.png" alt="Page Logo">
+    <div id="navbar">
+      <ul>
+        <li><a href="new_home.html">Home</a></li>
+        <li><a href="new_resources.html">Campus Resources</a></li>
+        <li><a href="new_bonus.html">Club Projects</a></li>
+        <li><a class="active" href="new_calendar.html">Calendar</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </div>
+
+    <div>
+            <h1 class="title">Club<br>Calendar</h1>
+          <div class="container">
+            <iframe src="https://calendar.google.com/calendar/embed?src=disabledstudentsofrpi%40gmail.com&ctz=America%2FNew_York&loading=async" 
+                    width="100%" height="500px" frameborder="0" scrolling="no" style="border-radius: 5px;"></iframe>
+          </div>
+    </div>
+
+    <script type="text/javascript" src="dsr_settings.js"></script>
   </div>
-
-  <div id="navbar">
-    <ul>
-      <li><a href="new_home.html">Home</a></li>
-      <li><a href="new_resources.html">Campus Resources</a></li>
-      <li><a href="new_bonus.html">Club Projects</a></li>
-      <li><a class="active" href="new_calendar.html">Calendar</a></li>
-      <li><a href="settings.html">Settings</a></li>
-    </ul>
-  </div>
-
-  <div>
-          <h1 class="title">Club<br>Calendar</h1>
-        <div class="container">
-          <iframe src="https://calendar.google.com/calendar/embed?src=disabledstudentsofrpi%40gmail.com&ctz=America%2FNew_York" 
-                  width="100%" height="500px" frameborder="0" scrolling="no" style="border-radius: 5px;"></iframe>
-        </div>
-  </div>
-
-  <script type="text/javascript" src="dsr_settings.js"></script>
+  
 </body>
 </html>

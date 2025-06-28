@@ -44,59 +44,61 @@
   </style>
 </head>
 <body>
-  <img src="disability-pride-flag.png" alt="Page Logo" class="image">
+  <div id="loading-screen"></div> <!-- overlay -->
+  <div id="page-content" style="display: none;">
+    <img src="disability-pride-flag.png" alt="Page Logo" class="image">
+    <div id="navbar">
+      <ul>
+        <li><a href="new_home.html">Home</a></li>
+        <li><a href="new_resources.html">Campus Resources</a></li>
+        <li><a href="new_bonus.html">Club Projects</a></li>
+        <li><a href="new_calendar.html">Calendar</a></li>
+        <li><a class="active" href="settings.html">Settings</a></li>
+      </ul>
+    </div>
 
-  <div id="navbar">
-    <ul>
-      <li><a href="new_home.html">Home</a></li>
-      <li><a href="new_resources.html">Campus Resources</a></li>
-      <li><a href="new_bonus.html">Club Projects</a></li>
-      <li><a href="new_calendar.html">Calendar</a></li>
-      <li><a class="active" href="settings.html">Settings</a></li>
-    </ul>
-  </div>
+    <h1 class="title">Settings</h1>
+    <div class="settings-container">
+      <div class="container">
+        <h2>Theme</h2>
+        <div id="theme-buttons">
+          <button class="theme-button" id="light-mode" onclick="setTheme('light-mode')">Light Mode</button>
+          <button class="theme-button" id="dark-mode" onclick="setTheme('dark-mode')">Dark Mode</button>
+          <button class="theme-button" id="cream" onclick="setTheme('cream')">Cream</button>
+          <button class="theme-button" id="custom-theme" onclick="setTheme('custom-theme')">Custom Theme</button>
+        </div>
+      </div>
 
-  <h1 class="title">Settings</h1>
-  <div class="settings-container">
-    <div class="container">
-      <h2>Theme</h2>
-      <div id="theme-buttons">
-        <button class="theme-button" id="light-mode" onclick="setTheme('light-mode')">Light Mode</button>
-        <button class="theme-button" id="dark-mode" onclick="setTheme('dark-mode')">Dark Mode</button>
-        <button class="theme-button" id="cream" onclick="setTheme('cream')">Cream</button>
-        <button class="theme-button" id="custom-theme" onclick="setTheme('custom-theme')">Custom Theme</button>
+      <div class="container">
+        <h2>Customize Theme</h2>
+        <label for="background-color-picker">Background Color:</label>
+        <input type="color" id="background-color-picker" value="#2A3F54" onchange="updateCustomTheme('background-color')"/><br>
+        
+        <label for="text-color-picker">Text Color:</label>
+        <input type="color" id="text-color-picker" value="#EDEDED" onchange="updateCustomTheme('text-color')"/><br>
+        
+        <label for="container-color-picker">Container Background Color:</label>
+        <input type="color" id="container-color-picker" value="#1A252F" onchange="updateCustomTheme('container-color')"/><br>
+        
+        <label for="button-color-picker">Button Background Color:</label>
+        <input type="color" id="button-color-picker" value="#39AD7D" onchange="updateCustomTheme('button-color')"/><br>
+        
+        <label for="bactive-color-picker">Active Button Background Color:</label>
+        <input type="color" id="bactive-color-picker" value="#555555" onchange="updateCustomTheme('bactive-color')"/><br>
+        
+        <label for="navbar-color-picker">Navbar Background Color:</label>
+        <input type="color" id="navbar-color-picker" value="#333333" onchange="updateCustomTheme('navbar-color')"/><br>
+        
+      </div>
+
+      <div class="container">
+        <h2>Text Size</h2>
+        <label for="text-size" class="title">Current Text Size: <span id="text-size-output" class="text-size-output">16</span><br></label> 
+        <input type="range" id="text-size-range" min="8" max="35" value="16" step="1" onchange="saveTextSize()" />
       </div>
     </div>
 
-    <div class="container">
-      <h2>Customize Theme</h2>
-      <label for="background-color-picker">Background Color:</label>
-      <input type="color" id="background-color-picker" value="#2A3F54" onchange="updateCustomTheme('background-color')"/><br>
-      
-      <label for="text-color-picker">Text Color:</label>
-      <input type="color" id="text-color-picker" value="#EDEDED" onchange="updateCustomTheme('text-color')"/><br>
-      
-      <label for="container-color-picker">Container Background Color:</label>
-      <input type="color" id="container-color-picker" value="#1A252F" onchange="updateCustomTheme('container-color')"/><br>
-      
-      <label for="button-color-picker">Button Background Color:</label>
-      <input type="color" id="button-color-picker" value="#39AD7D" onchange="updateCustomTheme('button-color')"/><br>
-      
-      <label for="bactive-color-picker">Active Button Background Color:</label>
-      <input type="color" id="bactive-color-picker" value="#555555" onchange="updateCustomTheme('bactive-color')"/><br>
-      
-      <label for="navbar-color-picker">Navbar Background Color:</label>
-      <input type="color" id="navbar-color-picker" value="#333333" onchange="updateCustomTheme('navbar-color')"/><br>
-      
-    </div>
-
-    <div class="container">
-      <h2>Text Size</h2>
-      <label for="text-size" class="title">Current Text Size: <span id="text-size-output" class="text-size-output">16</span><br></label> 
-      <input type="range" id="text-size-range" min="8" max="35" value="16" step="1" onchange="saveTextSize()" />
-    </div>
+    <script type="text/javascript" src="dsr_settings.js"></script>
   </div>
-
-  <script type="text/javascript" src="dsr_settings.js"></script>
 </body>
 </html>
