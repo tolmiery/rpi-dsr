@@ -23,10 +23,6 @@ function applySavedSettings() {
   const savedTextSize = localStorage.getItem('textSize');
   if (savedTextSize) {
       document.body.style.fontSize = `${savedTextSize}px`;
-      document.querySelectorAll('.text-element').forEach(function(el) {
-          el.style.fontSize = `${savedTextSize}px`;
-      });
-
       // Update the text size output
       const textSizeOutput = document.getElementById('text-size-output');
       if (textSizeOutput) {
@@ -36,6 +32,8 @@ function applySavedSettings() {
       if (textSizeRange) {
           textSizeRange.value = savedTextSize;
       }
+      const clampedSize = `clamp(8px, ${savedTextSize}px, 2.4vw)`;
+      document.documentElement.style.setProperty('--navbar-font-size', clampedSize);
   }
 }
 
@@ -44,13 +42,18 @@ function applySavedSettings() {
 function saveTextSize() {
   const textSize = document.getElementById('text-size-range').value;
   document.getElementById('text-size-output').textContent = `${textSize}`;
+
+  const clampedSize = `clamp(8px, ${textSize}px, 2.4vw)`;
+  document.documentElement.style.setProperty('--navbar-font-size', clampedSize);
   document.body.style.fontSize = `${textSize}px`;
-  document.querySelectorAll('.text-element').forEach(function(el) {
-    el.style.fontSize = `${textSize}px`; 
+
+  document.querySelectorAll('#navbar').forEach(function(el) {
+    el.style.fontSize = clampedSize;
   });
 
   localStorage.setItem('textSize', textSize);
 }
+
 
 function customHelper() {
   let savedColors = JSON.parse(localStorage.getItem('customThemeColors'));

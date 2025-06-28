@@ -49,6 +49,7 @@ body {
 
 
 #navbar {
+  font-size: var(--navbar-font-size); 
   width: 100%;
 }
 #navbar ul {
@@ -62,9 +63,10 @@ body {
   display: inline-block;
   color: #F0F4F9;
   text-align: center;
-  padding: 14px;
+  padding: 1.5em;
   text-decoration: none;
 }
+
 #navbar a:hover {
   background-color: #FFF;
   color: black;
