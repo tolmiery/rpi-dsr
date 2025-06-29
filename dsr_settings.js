@@ -5,7 +5,8 @@ function applySavedSettings() {
   if (theme) setTheme(theme);
   else setTheme("dark-mode"); // Default theme
   const savedTextSize = localStorage.getItem('textSize');
-  if (savedTextSize) updateTextSize(savedTextSize);
+  if (savedTextSize) updateTextSize(parseInt(savedTextSize, 10));
+  else updateTextSize(16); // Default text size
 }
 
 // Update text size based on value and apply to relevant elements
