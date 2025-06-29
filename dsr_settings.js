@@ -17,7 +17,7 @@ function updateTextSize(textSize) {
   const textSizeRange = document.getElementById('text-size-range');
   if (textSizeRange) textSizeRange.value = textSize;
 
-  const clampedSize = `clamp(8px, ${textSize}px, 2.4vw)`;
+  const clampedSize = `clamp(8px, ${textSize}px, 2.35vw)`;
   document.documentElement.style.setProperty('--navbar-font-size', clampedSize);
 }
 
@@ -82,20 +82,35 @@ function updateCustomTheme() {
 
 // Setup sticky navbar functionality
 let lastScrollY = window.scrollY;
+let scrollTimeout; 
 function stickFunction() {
   const navbar = document.getElementById("navbar");
   if (!navbar) return;
-  const navbarOffset = navbar.offsetTop;
+  const navbarOffset = navbar.offsetHeight + navbar.offsetTop;
   const currentScrollY = window.scrollY;
-  if (currentScrollY > lastScrollY && currentScrollY >= navbarOffset) {
+  if (currentScrollY <= lastScrollY && currentScrollY >= navbarOffset) {
     navbar.classList.add("sticky");
   }
-  else if (currentScrollY <= navbarOffset) {
+  if (currentScrollY <= navbarOffset) {
     navbar.classList.remove("sticky");
+  }
+  clearTimeout(scrollTimeout);
+  // Start a timeout to hide the navbar after 3 seconds if user stopped scrolling
+  if (currentScrollY >= navbarOffset) {
+    console.log(navbarOffset, currentScrollY);
+    scrollTimeout = setTimeout(() => {
+      navbar.style.transform = "translateY(-100%)";
+    }, 1000); 
+  }
+  // Show navbar again if scrolled, before the timeout triggers
+  if (currentScrollY < lastScrollY || currentScrollY <= navbarOffset) {
+    navbar.style.transition = "transform 0.3s ease-out"; 
+    navbar.style.transform = "translateY(0)"; 
   }
   lastScrollY = currentScrollY;
 }
 window.addEventListener("scroll", stickFunction);
+
 
 // Highlight active link in navbar based on current page
 function highlightActiveLink() {
