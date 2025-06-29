@@ -3,7 +3,7 @@ function applySavedSettings() {
   // Apply theme and text size settings if they exist
   const theme = localStorage.getItem("theme");
   if (theme) setTheme(theme);
-
+  else setTheme("dark-mode"); // Default theme
   const savedTextSize = localStorage.getItem('textSize');
   if (savedTextSize) updateTextSize(savedTextSize);
 }
@@ -97,7 +97,6 @@ function stickFunction() {
   clearTimeout(scrollTimeout);
   // Start a timeout to hide the navbar after 3 seconds if user stopped scrolling
   if (currentScrollY >= navbarOffset) {
-    console.log(navbarOffset, currentScrollY);
     scrollTimeout = setTimeout(() => {
       navbar.style.transform = "translateY(-100%)";
     }, 1000); 
@@ -125,7 +124,19 @@ function highlightActiveLink() {
 // Call on page load
 document.addEventListener("DOMContentLoaded", function () {
   applySavedSettings();
-
+   // Load header HTML and apply active link highlighting
+  const headerPlaceholder = document.getElementById("header-placeholder");
+  if (headerPlaceholder) {
+    fetch("../header.html")
+      .then(response => {
+        if (!response.ok) throw new Error("Failed to load header");
+        return response.text();
+      })
+      .then(html => {
+        headerPlaceholder.innerHTML = html;
+        highlightActiveLink();
+      });
+  }
   // Text size input listener
   const textSizeRange = document.getElementById('text-size-range');
   if (textSizeRange) textSizeRange.addEventListener('input', saveTextSize);
@@ -140,20 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const picker = document.getElementById(`${id}-color-picker`);
     if (picker) picker.addEventListener('input', updateCustomTheme);
   });
-
-  // Load header HTML and apply active link highlighting
-  const headerPlaceholder = document.getElementById("header-placeholder");
-  if (headerPlaceholder) {
-    fetch("header.html")
-      .then(response => {
-        if (!response.ok) throw new Error("Failed to load header");
-        return response.text();
-      })
-      .then(html => {
-        headerPlaceholder.innerHTML = html;
-        highlightActiveLink();
-      });
-  }
 
   // Delay before showing content to avoid FOUC
   const loadingScreen = document.getElementById("loading-screen");
